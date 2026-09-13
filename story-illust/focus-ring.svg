@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 440 440" fill="none">
+  <defs>
+    <path id="focusTextInner" d="M200,92 A108,108 0 1 1 199.99,92"/>
+    <path id="focusTextOuter" d="M200,48 A152,152 0 1 0 199.99,48"/>
+    <filter id="dropWide" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="dropSoft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.8"/>
+    </filter>
+  </defs>
+
+  <text fill="#ffffff" font-family="Malgun Gothic, Apple SD Gothic Neo, Pretendard, sans-serif" font-size="13.5" font-weight="700" letter-spacing="2.8">
+    <textPath href="#focusTextInner">BONGDA &#183; &#51461;&#45796; &#183; PLOVING &#183; &#48148;&#45796; &#183; BONGDA &#183; &#51461;&#45796; &#183; PLOVING &#183; &#48148;&#45796; &#183;</textPath>
+  </text>
+  <text fill="#ffffff" font-family="Malgun Gothic, Apple SD Gothic Neo, Pretendard, sans-serif" font-size="9.5" font-weight="700" letter-spacing="3.6" opacity="0.7">
+    <textPath href="#focusTextOuter">PLOVING &#183; BONGDA &#183; &#48148;&#45796; &#183; &#51461;&#45796; &#183; PLOVING &#183; BONGDA &#183; &#48148;&#45796; &#183;</textPath>
+  </text>
+
+  <circle cx="200" cy="200" r="118" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="16 10 6 14 20 12" opacity="0.9"/>
+  <circle cx="200" cy="200" r="142" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-dasharray="26 14 10 18 8 16 30 12" opacity="0.8"/>
+  <circle cx="200" cy="200" r="162" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="10 16 6 12 16 10" opacity="0.65"/>
+  <circle cx="200" cy="200" r="178" stroke="#ffffff" stroke-width="4.8" stroke-linecap="round" stroke-dasharray="32 16 12 22 10 18" opacity="0.75"/>
+  <circle cx="200" cy="200" r="192" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="8 14 12 18 6 16" opacity="0.45"/>
+
+  <!-- right water bloom -->
+  <ellipse cx="338" cy="198" rx="58" ry="96" fill="#ffffff" opacity="0.14" filter="url(#dropWide)"/>
+  <path d="M200 24 A176 176 0 0 1 352 140" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <path d="M318 278 A160 160 0 0 1 220 360" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.45"/>
+  <path d="M330 96 C 386 168, 384 248, 322 318" stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.16" filter="url(#dropWide)"/>
+
+  <!-- left water bloom (same spread as right) -->
+  <ellipse cx="62" cy="198" rx="58" ry="96" fill="#ffffff" opacity="0.14" filter="url(#dropWide)"/>
+  <path d="M200 24 A176 176 0 0 0 48 140" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <path d="M82 278 A160 160 0 0 0 180 360" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.45"/>
+  <path d="M48 248 A176 176 0 0 1 168 368" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+  <path d="M70 96 C 14 168, 16 248, 78 318" stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity="0.16" filter="url(#dropWide)"/>
+  <path d="M52 130 C 8 200, 14 260, 86 312" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.28" filter="url(#dropSoft)"/>
+</svg>

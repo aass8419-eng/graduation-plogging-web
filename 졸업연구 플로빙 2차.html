@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="봉그다(BONGDA) — 해녀와 함께하는 해안 플로빙 브랜드. 줍고 만들고 입다." />
+  <title>봉그다 | 줍고 만들고 입다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400..900;1,400..900&family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --volt: #0000fe;
+      --volt-dim: #0000c2;
+
+      --ink: #0a0a0a;
+      --ink-soft: #3a3a3a;
+      --paper: #ffffff;
+      --bone: #f3f3f1;
+      --line: rgba(10, 10, 10, 0.14);
+
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+      --font-display: "Archivo", "Noto Sans KR", sans-serif;
+      --font-display-kr: "Noto Sans KR", "Archivo", sans-serif;
+      --font-body: "Archivo", "Noto Sans KR", system-ui, sans-serif;
+      --font-kr: "Noto Sans KR", "Archivo", sans-serif;
+
+      --nav-h: 84px;
+      --bar-h: 34px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-kr);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      font-weight: 400;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    p { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3 { margin: 0; }
+
+    .display-kr {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      line-height: 1.02;
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px);
+    }
+
+    /* ============ PROMO BAR ============ */
+    .promo {
+      position: relative;
+      z-index: 60;
+      height: var(--bar-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--volt);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .promo__track {
+      display: inline-flex;
+      animation: promo 40s linear infinite;
+    }
+
+    .promo__track span { flex-shrink: 0; margin-right: 4rem; }
+
+    @keyframes promo {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============ HEADER ============ */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 55;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .header__inner {
+      position: relative;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 40px);
+    }
+
+    .brandblock {
+      display: flex;
+      align-items: center;
+      margin-left: clamp(-170px, -12vw, -40px);
+    }
+
+    .brandblock__logo {
+      height: clamp(34px, 4.6vw, 50px);
+      width: auto;
+    }
+
+    .nav {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.5vw, 24px);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 6px 2px;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--volt);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s var(--ease);
+    }
+
+    .nav a:hover { color: var(--volt); }
+    .nav a:hover::after { transform: scaleX(1); }
+    .nav a.is-sale { color: var(--volt); }
+
+    .header__tools {
+      margin-left: auto;
+      margin-right: clamp(-170px, -12vw, -40px);
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1.4vw, 18px);
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      color: var(--ink);
+      transition: color 0.2s ease, transform 0.2s var(--ease);
+    }
+
+    .icon-btn:hover { color: var(--volt); transform: translateY(-1px); }
+    #wishOpen, #loginOpen { position: relative; background: none; border: none; padding: 0; cursor: pointer; }
+
+    /* ============ 로그인 모달 ============ */
+    .login { position: fixed; inset: 0; z-index: 110; display: flex; align-items: center; justify-content: center; visibility: hidden; }
+    .login.open { visibility: visible; }
+    .login__overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 0.3s ease; }
+    .login.open .login__overlay { opacity: 1; }
+
+    .login__box {
+      position: relative;
+      width: min(400px, 92vw);
+      background: #fff;
+      padding: clamp(28px, 4vw, 44px);
+      transform: translateY(16px) scale(0.98);
+      opacity: 0;
+      transition: transform 0.32s var(--ease), opacity 0.32s var(--ease);
+    }
+    .login.open .login__box { transform: translateY(0) scale(1); opacity: 1; }
+
+    .login__close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.15rem; line-height: 1; cursor: pointer; color: var(--ink); padding: 4px; }
+    .login__close:hover { color: var(--volt); }
+
+    .login__logo { height: 30px; width: auto; margin-bottom: 18px; }
+    .login__title { font-family: var(--font-display-kr); font-weight: 500; font-size: 1.35rem; margin-bottom: 6px; }
+    .login__sub { color: var(--ink-soft); font-size: 0.86rem; margin-bottom: 24px; }
+
+    .login__field { margin-bottom: 14px; }
+    .login__field label { display: block; font-size: 0.76rem; color: var(--ink-soft); margin-bottom: 6px; letter-spacing: 0.02em; }
+    .login__field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-family: var(--font-kr);
+      font-size: 0.9rem;
+      color: var(--ink);
+      transition: border-color 0.2s ease;
+    }
+    .login__field input:focus { outline: none; border-color: var(--volt); }
+
+    .login__row { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 20px; font-size: 0.8rem; }
+    .login__row label { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-soft); cursor: pointer; }
+    .login__row a { color: var(--volt); }
+
+    .login__submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--volt);
+      color: #fff;
+      border: none;
+      font-family: var(--font-kr);
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .login__submit:hover { background: var(--volt-dim); }
+
+    .login__foot { margin-top: 20px; text-align: center; font-size: 0.84rem; color: var(--ink-soft); }
+    .login__foot a { color: var(--volt); }
+
+    /* ============ 구매 모달 ============ */
+    .buy { position: fixed; inset: 0; z-index: 110; display: flex; align-items: center; justify-content: center; visibility: hidden; }
+    .buy.open { visibility: visible; }
+    .buy__overlay { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); opacity: 0; transition: opacity 0.3s ease; }
+    .buy.open .buy__overlay { opacity: 1; }
+    .buy__box {
+      position: relative;
+      width: min(420px, 92vw);
+      background: #fff;
+      padding: clamp(24px, 4vw, 36px);
+      transform: translateY(16px) scale(0.98);
+      opacity: 0;
+      transition: transform 0.32s var(--ease), opacity 0.32s var(--ease);
+    }
+    .buy.open .buy__box { transform: translateY(0) scale(1); opacity: 1; }
+    .buy__close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 1.15rem; cursor: pointer; color: var(--ink); padding: 4px; }
+    .buy__close:hover { color: var(--volt); }
+    .buy__title { font-family: var(--font-display-kr); font-weight: 500; font-size: 1.2rem; margin-bottom: 18px; }
+    .buy__product { display: flex; gap: 14px; margin-bottom: 20px; align-items: center; }
+    .buy__thumb { width: 88px; height: 110px; object-fit: contain; background: var(--bone); flex-shrink: 0; }
+    .buy__meta { flex: 1; min-width: 0; }
+    .buy__name { font-size: 0.95rem; line-height: 1.45; margin-bottom: 8px; }
+    .buy__price { font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-soft); }
+    .buy__row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 0.88rem; }
+    .buy__qty { display: inline-flex; align-items: center; border: 1px solid var(--line); }
+    .buy__qty button { width: 34px; height: 34px; background: none; border: none; cursor: pointer; font-size: 1.05rem; color: var(--ink); }
+    .buy__qty button:hover { color: var(--volt); }
+    .buy__qty span { min-width: 28px; text-align: center; font-family: var(--font-body); }
+    .buy__total { text-align: right; margin-bottom: 18px; font-size: 0.9rem; }
+    .buy__total strong { display: block; margin-top: 4px; font-size: 1.15rem; color: var(--volt); font-weight: 500; }
+    .buy__submit { width: 100%; padding: 14px; background: var(--volt); color: #fff; border: none; font-family: var(--font-kr); font-size: 0.92rem; cursor: pointer; transition: background 0.2s ease; }
+    .buy__submit:hover { background: var(--volt-dim); }
+    .buy__cartbtn { width: 100%; margin-top: 10px; padding: 13px; background: #fff; color: var(--ink); border: 1px solid var(--ink); font-family: var(--font-kr); font-size: 0.88rem; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+    .buy__cartbtn:hover { background: var(--ink); color: #fff; }
+    .buy__hint { margin-top: 14px; font-size: 0.76rem; color: var(--ink-soft); text-align: center; }
+
+    .cartdrawer__foot { padding: 16px 24px 24px; border-top: 1px solid var(--line); }
+    .cartdrawer__total { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; font-size: 0.9rem; }
+    .cartdrawer__total strong { font-size: 1.1rem; color: var(--volt); }
+    .cartdrawer__checkout { width: 100%; padding: 14px; background: var(--volt); color: #fff; border: none; font-family: var(--font-kr); font-size: 0.92rem; cursor: pointer; }
+    .cartdrawer__checkout:hover { background: var(--volt-dim); }
+    .cartitem__qty { font-size: 0.78rem; color: var(--ink-soft); margin-top: 3px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 120;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 0.88rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    .cartbadge {
+      position: absolute;
+      top: -1px;
+      right: -2px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--volt);
+      color: #fff;
+      border-radius: 9px;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      line-height: 1;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .cartbadge.show { display: inline-flex; }
+    #cartOpen { position: relative; background: none; border: none; padding: 0; cursor: pointer; }
+
+    .wishbadge {
+      position: absolute;
+      top: -1px;
+      right: -2px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      background: var(--volt);
+      color: #fff;
+      border-radius: 9px;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      line-height: 1;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .wishbadge.show { display: inline-flex; }
+
+    /* ============ 위시리스트 드로어 ============ */
+    .wishdrawer { position: fixed; inset: 0; z-index: 100; visibility: hidden; }
+    .wishdrawer.open { visibility: visible; }
+
+    .wishdrawer__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.42);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .wishdrawer.open .wishdrawer__overlay { opacity: 1; }
+
+    .wishdrawer__panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: min(420px, 90vw);
+      background: #fff;
+      transform: translateX(100%);
+      transition: transform 0.38s var(--ease);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -12px 0 44px rgba(0, 0, 0, 0.16);
+    }
+    .wishdrawer.open .wishdrawer__panel { transform: translateX(0); }
+
+    .wishdrawer__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .wishdrawer__head h3 { font-family: var(--font-display-kr); font-weight: 500; font-size: 1.1rem; }
+    .wishdrawer__head h3 span { color: var(--volt); }
+
+    .wishdrawer__close { background: none; border: none; font-size: 1.2rem; line-height: 1; cursor: pointer; color: var(--ink); padding: 4px; }
+    .wishdrawer__close:hover { color: var(--volt); }
+
+    .wishdrawer__body { flex: 1; overflow-y: auto; padding: 8px 24px 28px; }
+    .wishdrawer__empty { color: var(--ink-soft); font-size: 0.9rem; padding: 48px 0; text-align: center; }
+
+    .wishitem { display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .wishitem__img { width: 64px; height: 80px; object-fit: contain; background: var(--bone); flex-shrink: 0; }
+    .wishitem__info { flex: 1; min-width: 0; }
+    .wishitem__name { font-size: 0.9rem; margin-bottom: 5px; }
+    .wishitem__price { font-family: var(--font-body); font-size: 0.86rem; color: var(--ink-soft); }
+    .wishitem__remove { background: none; border: none; cursor: pointer; color: var(--ink-soft); font-size: 1rem; padding: 6px; flex-shrink: 0; }
+    .wishitem__remove:hover { color: var(--volt); }
+    .icon-btn svg { width: 20px; height: 20px; }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 1100px) {
+      .nav { display: none; }
+      .nav-toggle { display: inline-flex; order: 5; }
+    }
+
+    /* ============ INTRO (거대 로고) ============ */
+    .intro {
+      min-height: calc((100svh - var(--nav-h) - var(--bar-h)) / 2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper);
+      padding: clamp(10px, 2vw, 28px) 0;
+      overflow: hidden;
+    }
+
+    .intro__logo {
+      width: min(47vw, 750px);
+      height: auto;
+    }
+
+    /* ============ ENTRY 블록 ============ */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 700px) { .entry { grid-template-columns: 1fr; } }
+
+    .entry__block {
+      position: relative;
+      min-height: clamp(380px, 52vw, 640px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+      padding: clamp(32px, 5vw, 72px);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .entry__block--blue { background: var(--volt); }
+    .entry__block--ink { background: var(--ink); }
+
+    .entry__title {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.7rem, 4.4vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .entry__block:hover .entry__title { transform: scale(1.04); }
+
+    .entry__sub {
+      font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ============ SECTION SHELL ============ */
+    .section { padding: clamp(48px, 7vw, 92px) 0; }
+
+    .section__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: clamp(22px, 3vw, 36px);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--volt);
+      margin-bottom: 12px;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: var(--volt);
+    }
+
+    .section__title {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.4rem, 4vw, 2.6rem);
+      line-height: 0.98;
+      color: var(--ink);
+    }
+
+    .section__title em { font-style: normal; color: var(--volt); }
+
+    /* ============ MOST WANTED 캐러셀 ============ */
+    .mw__arrows { display: flex; gap: 2px; }
+
+    .mw__arrow {
+      width: 30px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      padding: 0;
+      color: var(--volt);
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s var(--ease);
+    }
+
+    .mw__arrow:hover { transform: scale(1.15); }
+    .mw__arrow:active { transform: scale(0.95); }
+    .mw__arrow svg { width: 20px; height: 20px; display: block; }
+
+    .mw-viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .mw-viewport::-webkit-scrollbar { display: none; }
+
+    .mw-track .pcard { border-right: none; border-bottom: none; }
+
+    .mw-track {
+      display: flex;
+      width: max-content;
+    }
+
+    .mw-track .pcard {
+      flex: 0 0 clamp(220px, 26vw, 300px);
+      scroll-snap-align: start;
+    }
+
+    /* ============ 브랜드 스토리 ============ */
+    .story { position: relative; }
+
+    .story__intro {
+      position: relative;
+      overflow: hidden;
+      background: var(--volt);
+      color: #fff;
+      padding: clamp(64px, 13vw, 170px) 0;
+    }
+
+    .story__intro .wrap { position: relative; z-index: 1; }
+
+    .story__kicker {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    .story__lead {
+      font-size: clamp(1.7rem, 4.4vw, 3.4rem);
+      line-height: 1.3;
+      max-width: 22ch;
+      letter-spacing: -0.01em;
+    }
+
+    .story__lead em {
+      font-style: normal;
+      border-bottom: 3px solid rgba(255, 255, 255, 0.55);
+      padding-bottom: 2px;
+    }
+
+    .story__deco {
+      position: absolute;
+      right: -2%;
+      bottom: -8%;
+      width: clamp(220px, 36vw, 580px);
+      opacity: 0.16;
+      filter: brightness(0) invert(1);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .story__body { padding: clamp(54px, 9vw, 120px) 0; }
+
+    .story__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(28px, 6vw, 84px);
+      align-items: start;
+    }
+
+    @media (max-width: 860px) { .story__grid { grid-template-columns: 1fr; } }
+
+    .story__title {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+      line-height: 1.24;
+      margin-bottom: 22px;
+    }
+
+    .story__title em { font-style: normal; color: var(--volt); }
+
+    .story__text p {
+      color: var(--ink-soft);
+      font-size: clamp(0.95rem, 1.4vw, 1.06rem);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .story__pillars { display: grid; gap: 4px; }
+
+    .pillar { border-top: 1px solid var(--line); padding: 18px 0; }
+    .pillar:last-child { border-bottom: 1px solid var(--line); }
+
+    .pillar__no {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--volt);
+    }
+
+    .pillar__name {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin: 6px 0 8px;
+    }
+
+    .pillar__desc { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.7; }
+
+    /* ============ 카탈로그 (필터 + 라인 그리드) ============ */
+    .shop-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+    }
+
+    .shop-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 4px;
+      background: transparent;
+      border: none;
+      color: var(--volt);
+      font-family: var(--font-kr);
+      font-size: 0.82rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .filter-btn:hover { color: var(--ink); }
+    .filter-btn svg { width: 11px; height: 11px; transition: transform 0.2s ease; }
+
+    .fdrop { position: relative; }
+    .fdrop > .filter-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+    .fdrop__menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 152px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+      padding: 6px 0;
+      z-index: 30;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    }
+
+    .fdrop.open .fdrop__menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .fdrop--right .fdrop__menu { left: auto; right: 0; }
+
+    .fdrop__menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 9px 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-kr);
+      font-size: 0.84rem;
+      color: var(--ink);
+      white-space: nowrap;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .fdrop__menu button:hover { background: var(--bone); color: var(--volt); }
+    .fdrop__menu button.is-sel { color: var(--volt); font-weight: 500; }
+
+    .shop-meta { display: flex; align-items: center; gap: 16px; }
+    .shop-count { font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); }
+
+    .gender-tabs {
+      display: flex;
+      justify-content: center;
+      margin: clamp(4px, 1vw, 12px) 0 clamp(18px, 2.4vw, 28px);
+    }
+    .gender-tab {
+      min-width: 104px;
+      padding: 10px 24px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--volt);
+      background: #fff;
+      border: 1px solid var(--volt);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .gender-tab + .gender-tab { border-left: none; }
+    .gender-tab.is-active { background: var(--volt); color: #fff; }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      border-top: 1px solid var(--volt);
+      border-left: 1px solid var(--volt);
+    }
+
+    .catalog .pcard {
+      border-right: 1px solid var(--volt);
+      border-bottom: 1px solid var(--volt);
+    }
+
+    @media (max-width: 980px) { .catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+    /* ============ 룩북 (착용 컷) ============ */
+    .look__viewport {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      touch-action: pan-y;
+      container-type: inline-size;
+    }
+
+    .look__viewport.dragging {
+      cursor: grabbing;
+      scroll-snap-type: none;
+    }
+
+    .look__viewport.dragging .look__set { pointer-events: none; }
+
+    .look__viewport::-webkit-scrollbar { display: none; }
+
+    .look__track {
+      --look-gap: clamp(6px, 0.9vw, 12px);
+      display: flex;
+      gap: var(--look-gap);
+      width: max-content;
+      padding-bottom: 6px;
+    }
+
+    .look__set {
+      flex: 0 0 calc((100cqw - 4 * var(--look-gap)) / 5);
+      scroll-snap-align: start;
+      display: block;
+      padding: 0;
+      border: none;
+      background: #fff;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      text-align: center;
+    }
+
+    .look__set img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+    }
+
+    .look__cap {
+      display: block;
+      margin-top: 14px;
+      font-family: var(--font-kr);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-align: center;
+      background: #fff;
+    }
+
+    .look__arrows {
+      display: flex;
+      background: #fff;
+    }
+    .look__arrow {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      padding: 0;
+      color: var(--volt);
+      cursor: pointer;
+      transition: transform 0.2s var(--ease), opacity 0.2s ease;
+    }
+    .look__arrow:hover { transform: scale(1.12); }
+    .look__arrow:active { transform: scale(0.95); }
+    .look__arrow svg { width: 16px; height: 16px; display: block; }
+
+    @media (max-width: 760px) {
+      .look__set { flex-basis: calc((100cqw - var(--look-gap)) / 2); }
+    }
+
+    .wearview {
+      position: fixed;
+      inset: 0;
+      z-index: 130;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+    }
+    .wearview.open { visibility: visible; background: #000; }
+    .wearview__overlay {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      transition: opacity 0.32s var(--ease);
+    }
+    .wearview.open .wearview__overlay { opacity: 1; }
+    .wearview__stage {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 94vw);
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: transform 0.32s var(--ease), opacity 0.32s var(--ease);
+    }
+    .wearview.open .wearview__stage { opacity: 1; transform: none; }
+    .wearview__img {
+      display: block;
+      width: 100%;
+      max-height: calc(92vh - 64px);
+      object-fit: contain;
+      background: #fff;
+    }
+    .wearview__cap {
+      margin-top: 16px;
+      font-family: var(--font-kr);
+      font-size: 0.92rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .wearview__close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .wearview__close:hover { color: var(--volt); }
+    .wearview__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 0;
+    }
+    .wearview__nav svg { width: 22px; height: 22px; display: block; }
+    .wearview__nav:hover { color: var(--volt); }
+    .wearview__nav:disabled { opacity: 0.25; cursor: default; }
+    .wearview__nav--prev { left: 12px; }
+    .wearview__nav--next { right: 12px; }
+    body.wear-open { overflow: hidden; }
+
+    /* ============ PRODUCT CARD (공용) ============ */
+    .pcard {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.2s ease;
+    }
+
+    .pcard:hover { background: #fff; }
+
+    .pcard__media {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .pcard__media > img:not(.pcard__alt) {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+      transition: opacity 0.4s var(--ease), transform 0.5s var(--ease);
+    }
+
+    .pcard:not(:has(.pcard__alt)):hover .pcard__media img { transform: scale(1.05); }
+
+    .pcard__alt {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease);
+    }
+
+    .pcard:has(.pcard__alt):hover .pcard__media > img:not(.pcard__alt) {
+      opacity: 0;
+    }
+
+    .pcard:hover .pcard__alt { opacity: 1; }
+
+    .pcard__eco {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #1f7a3d;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+
+    .pcard__eco::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8be0a4;
+    }
+
+    .pcard__wish {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: var(--volt);
+      z-index: 2;
+      transition: color 0.2s ease, transform 0.2s var(--ease);
+    }
+
+    .pcard__wish:hover { color: var(--volt); transform: scale(1.12); }
+    .pcard__wish.is-on { color: var(--volt); }
+    .pcard__wish svg { width: 17px; height: 17px; transition: transform 0.2s var(--ease); }
+    .pcard__wish.is-on svg { fill: currentColor; }
+
+    .pcard__wish.pop svg { animation: heartPop 0.45s var(--ease); }
+
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      25% { transform: scale(0.75); }
+      55% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .pcard__wish::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--volt);
+      transform: translate(-50%, -50%) scale(0.3);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pcard__wish.pop::after { animation: heartBurst 0.55s var(--ease); }
+
+    @keyframes heartBurst {
+      0% { opacity: 0.75; transform: translate(-50%, -50%) scale(0.3); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(3.4); }
+    }
+
+    .pcard__info {
+      position: relative;
+      padding: 6px 14px 18px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .pcard__name {
+      font-family: var(--font-kr);
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      max-width: 84%;
+    }
+
+    .pcard__price {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+      font-family: var(--font-body);
+    }
+
+    .pcard__now { font-size: 1rem; font-weight: 400; color: var(--ink); }
+
+    .pcard__swatches { display: flex; gap: 6px; margin-top: 2px; }
+
+    .pcard__swatches span {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .pcard__add {
+      position: absolute;
+      right: 10px;
+      bottom: 12px;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      padding: 0;
+      color: var(--volt);
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s var(--ease);
+    }
+
+    .pcard__add:hover { color: var(--volt); transform: scale(1.15); }
+
+    /* ============ 블루 스트립 ============ */
+    .strip {
+      background: transparent;
+      color: var(--volt);
+      overflow: hidden;
+      padding: 16px 0;
+      margin-top: -10px;
+      white-space: nowrap;
+    }
+
+    .strip__track {
+      display: inline-flex;
+      animation: strip 60s linear infinite;
+    }
+
+    .strip__track span {
+      font-family: var(--font-display);
+      font-size: clamp(0.78rem, 1.5vw, 1.1rem);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    @keyframes strip {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============ 카테고리 분할 배너 ============ */
+    .cats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 760px) { .cats { grid-template-columns: 1fr; } }
+
+    .cat {
+      position: relative;
+      min-height: clamp(380px, 44vw, 580px);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .cat__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .cat:hover .cat__bg { transform: scale(1.05); }
+
+    .cat--photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+    }
+
+    .cat--light { background: var(--bone); }
+
+    .cat--light .cat__bg {
+      object-fit: contain;
+      padding: clamp(24px, 5vw, 64px);
+    }
+
+    .cat__body {
+      position: relative;
+      z-index: 2;
+      padding: clamp(26px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .cat--photo .cat__body { color: #fff; }
+    .cat--light .cat__body { color: var(--ink); }
+
+    .cat__kicker {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .cat--light .cat__kicker { color: var(--volt); }
+
+    .cat__title {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.6rem, 4vw, 2.7rem);
+      line-height: 1;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 28px;
+      font-family: var(--font-kr);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      border: 2px solid var(--volt);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s var(--ease);
+    }
+
+    .btn:active { transform: scale(0.98); }
+    .btn--solid { border: none; background: transparent; color: var(--volt); padding: 0; min-height: auto; }
+    .btn--solid:hover { background: transparent; color: var(--volt-dim); }
+    .btn--light { border: none; color: #fff; background: transparent; }
+    .btn--light:hover { background: #fff; color: var(--ink); }
+
+    /* ============ 뉴스레터 ============ */
+    .news {
+      background: var(--volt);
+      color: #fff;
+      padding: clamp(48px, 7vw, 92px) 0;
+    }
+
+    .news__inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+    }
+
+    @media (max-width: 760px) {
+      .news__inner { grid-template-columns: 1fr; align-items: start; gap: 28px; }
+    }
+
+    .news__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .news__kicker::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: #fff;
+    }
+
+    .news h2 {
+      font-family: var(--font-display-kr);
+      font-weight: 500;
+      font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+      line-height: 1.02;
+      margin-bottom: 16px;
+    }
+
+    .news p {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 34em;
+      margin: 0;
+    }
+
+    .news__form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .news__field {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+      transition: border-color 0.2s ease;
+    }
+
+    .news__field:focus-within { border-color: #fff; }
+
+    .news__form input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 4px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-family: var(--font-kr);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .news__form input::placeholder { color: rgba(255, 255, 255, 0.65); }
+    .news__form input:focus { outline: none; }
+
+    .news__form button {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: auto;
+      padding: 0;
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-family: var(--font-kr);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .news__form button:hover { color: rgba(255, 255, 255, 0.75); }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--ink);
+      color: #cfcfcf;
+      padding: clamp(48px, 7vw, 88px) 0 36px;
+    }
+
+    .footer__top {
+      display: grid;
+      grid-template-columns: minmax(140px, 1fr) repeat(3, minmax(7.5rem, max-content));
+      column-gap: clamp(28px, 3.2vw, 48px);
+      row-gap: 28px;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 820px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer__top { grid-template-columns: 1fr; } }
+
+    .footer__logo { height: clamp(108px, 18vw, 168px); width: auto; margin-bottom: 14px; }
+
+    .footer__brand-tag {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--volt);
+    }
+
+    .footer__col h4 {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .footer__col a, .footer__col p {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 400;
+      color: #a8a8a8;
+      margin-bottom: 9px;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .footer__col a:hover { color: #6f8bff; }
+
+    .footer__bottom {
+      margin-top: clamp(36px, 5vw, 56px);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: #777;
+    }
+
+    /* ============ 일러스트 장식 ============ */
+    .intro { position: relative; }
+    .intro__logo { position: relative; z-index: 2; }
+    .intro__deco {
+      position: absolute;
+      width: clamp(80px, 11vw, 175px);
+      opacity: 0.12;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .intro__deco--tl { top: clamp(8px, 4vw, 44px); left: clamp(8px, 4vw, 52px); transform: rotate(-8deg); }
+    .intro__deco--br { bottom: clamp(8px, 4vw, 44px); right: clamp(8px, 4vw, 52px); transform: rotate(10deg); }
+
+    .entry__title, .entry__sub { position: relative; z-index: 1; }
+    .entry__deco {
+      position: absolute;
+      right: -5%;
+      bottom: -6%;
+      width: clamp(150px, 26vw, 330px);
+      opacity: 0.16;
+      filter: brightness(0) invert(1);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      transition: transform 0.5s var(--ease);
+    }
+    .entry__block:hover .entry__deco { transform: translateY(-8px) scale(1.04); }
+
+    .strip__track img {
+      display: inline-block;
+      height: clamp(15px, 2.1vw, 24px);
+      width: auto;
+      vertical-align: middle;
+      filter: brightness(0) saturate(100%) invert(9%) sepia(99%) saturate(7452%) hue-rotate(247deg) brightness(97%) contrast(146%);
+      margin: 0 1rem;
+    }
+
+    .news { position: relative; overflow: hidden; }
+    .news > * { position: relative; z-index: 1; }
+    .news__deco {
+      position: absolute;
+      bottom: -8%;
+      width: clamp(150px, 22vw, 290px);
+      opacity: 0.15;
+      filter: brightness(0) invert(1);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    .news__deco--l { left: -2%; transform: rotate(-8deg); }
+    .news__deco--r { right: -2%; transform: rotate(10deg); }
+    @media (max-width: 680px) { .news__deco { display: none; } }
+
+    .footer { position: relative; overflow: hidden; }
+    .footer .wrap { position: relative; z-index: 1; }
+    .footer__deco {
+      position: absolute;
+      top: 4%;
+      width: clamp(220px, 28vw, 420px);
+      opacity: 0.18;
+      filter: brightness(0) invert(1);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    .footer__deco--r { right: -1%; transform: rotate(6deg); }
+    .footer__deco--l { left: -1%; transform: rotate(-8deg); }
+    @media (max-width: 680px) { .footer__deco--l { display: none; } }
+
+    /* ============ REVEAL ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+      transition-delay: var(--d, 0s);
+    }
+
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* 카탈로그 사이드 그래픽 슬라이드 인 */
+    #catalog { position: relative; overflow: hidden; }
+    #catalog .wrap { position: relative; z-index: 1; max-width: 100%; padding: 0 clamp(8px, 1vw, 16px); }
+
+    .cat-deco {
+      position: absolute;
+      top: clamp(10px, 5vw, 70px);
+      width: clamp(90px, 11vw, 180px);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+
+    .cat-deco--l { left: clamp(0px, 1.5vw, 28px); transform: translateX(-140%) rotate(-6deg); }
+    .cat-deco--r { right: clamp(0px, 1.5vw, 28px); transform: translateX(140%) rotate(6deg); }
+    .cat-deco--l2 { left: clamp(0px, 1.5vw, 28px); top: auto; bottom: clamp(40px, 14vw, 180px); transform: translateX(-140%) rotate(8deg); }
+    .cat-deco--r2 { right: clamp(0px, 1.5vw, 28px); top: auto; bottom: clamp(40px, 14vw, 180px); transform: translateX(140%) rotate(-8deg); }
+
+    .cat-deco.in { opacity: 0.9; transform: translateX(0) rotate(0deg); }
+
+    @media (max-width: 1024px) { .cat-deco { display: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .promo__track, .strip__track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- PROMO BAR -->
+  <div class="promo" aria-label="공지">
+    <div class="promo__track" aria-hidden="true">
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+      <span>줍고 · 만들고 · 입다</span>
+      <span>달리며 줍다, 플로빙</span>
+      <span>바다를 위한 한 걸음</span>
+      <span>해안을 달리고 바다를 지키다</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="brandblock" href="#" aria-label="봉그다 홈">
+        <img class="brandblock__logo" src="logo-bongda-blue.png" alt="봉그다" decoding="async" />
+      </a>
+
+      <nav class="nav" aria-label="주요 메뉴">
+        <a class="is-sale" href="#catalog">세일</a>
+        <a href="#mostwanted">신상품</a>
+        <a href="#catalog">굿즈</a>
+        <a href="#cats">수영용품</a>
+        <a href="#cats">의류</a>
+        <a href="#cats">액세서리</a>
+        <a href="봉그다이야기.html">봉그다 이야기</a>
+      </nav>
+
+      <div class="header__tools">
+        <a class="icon-btn" href="#" aria-label="검색">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </a>
+        <button class="icon-btn" type="button" id="loginOpen" aria-label="계정">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </button>
+        <button class="icon-btn" type="button" id="wishOpen" aria-label="위시리스트">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span class="wishbadge" id="wishBadge">0</span>
+        </button>
+        <button class="icon-btn" type="button" id="cartOpen" aria-label="장바구니">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="cartbadge" id="cartBadge">0</span>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-label="메뉴 열기">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO : 거대 로고 -->
+  <section class="intro" aria-label="봉그다">
+    <img class="intro__deco intro__deco--tl" src="illust/2.png" alt="" aria-hidden="true" decoding="async" />
+    <img class="intro__logo" src="logo-bongda-blue.png" alt="봉그다" decoding="async" />
+    <img class="intro__deco intro__deco--br" src="illust/7.png" alt="" aria-hidden="true" decoding="async" />
+  </section>
+
+  <!-- ENTRY : 컬러 블록 -->
+  <section class="entry" aria-label="바로가기">
+    <a class="entry__block entry__block--blue" href="봉그다이야기.html">
+      <span class="entry__title">봉그다 이야기</span>
+      <span class="entry__sub">해녀와 함께 줍고 만들고 입다<br />봉그다의 이야기를 만나보세요</span>
+      <img class="entry__deco" src="illust/9.png" alt="" aria-hidden="true" decoding="async" />
+    </a>
+    <a class="entry__block entry__block--ink" href="#catalog">
+      <span class="entry__title">Shop</span>
+      <span class="entry__sub">온라인 스토어 오픈<br />지금 굿즈 라인업 만나보기</span>
+      <img class="entry__deco" src="illust/2.png" alt="" aria-hidden="true" decoding="async" />
+    </a>
+  </section>
+
+  <!-- MOST WANTED 캐러셀 -->
+  <section id="mostwanted" class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="kicker">Most Wanted</span>
+          <h2 class="section__title">가장 인기 있는 <em>제품</em></h2>
+        </div>
+        <div class="mw__arrows">
+          <button class="mw__arrow" type="button" data-dir="-1" aria-label="이전">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 4L6 12l9 8z"/></svg>
+          </button>
+          <button class="mw__arrow" type="button" data-dir="1" aria-label="다음">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 4l9 8-9 8z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mw-viewport" id="mwViewport">
+        <div class="mw-track">
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/p01.png" alt="봉그다 텀블러 아이보리" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">봉그다 텀블러</h3>
+              <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/p07.png" alt="플로빙 티셔츠 화이트" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">플로빙 티셔츠</h3>
+              <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/swim2.png" alt="봉그다 수영복 스타 블루" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">봉그다 수영복</h3>
+              <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/key8.png" alt="봉그다 키링 가방 블루" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">봉그다 키링</h3>
+              <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/p13.png" alt="플로빙 위크 티셔츠 화이트" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+              <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+          <a class="pcard" href="#catalog">
+            <div class="pcard__media">
+              <img src="products/p02.png" alt="플로빙 텀블러 네이비" loading="lazy" decoding="async" />
+              <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+            </div>
+            <div class="pcard__info">
+              <h3 class="pcard__name">플로빙 텀블러</h3>
+              <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+              <button class="pcard__add" type="button" aria-label="담기">+</button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 블루 스트립 -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip__track">
+      <span>해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" />해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" />해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" /></span>
+      <span>해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" />해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" />해안 정화<img src="illust/4.png" alt="" />바다 존중<img src="illust/2.png" alt="" />함께 달리기<img src="illust/7.png" alt="" />해녀의 속도<img src="illust/6.png" alt="" /></span>
+    </div>
+  </div>
+
+  <!-- 카테고리 분할 배너 -->
+  <section id="cats" class="cats" aria-label="컬렉션">
+    <a class="cat cat--photo reveal" href="플로빙컬렉션.html">
+      <img class="cat__bg" src="3.png" alt="플로빙 현장" loading="lazy" decoding="async" />
+      <div class="cat__body">
+        <span class="cat__kicker">Collection</span>
+        <h3 class="cat__title">플로빙<br />컬렉션</h3>
+        <span class="btn btn--light">컬렉션 보기</span>
+      </div>
+    </a>
+    <a class="cat cat--light reveal" href="#catalog">
+      <img class="cat__bg" src="illust/2.png" alt="굿즈 일러스트" loading="lazy" decoding="async" />
+      <div class="cat__body">
+        <span class="cat__kicker">Collection</span>
+        <h3 class="cat__title">굿즈<br />컬렉션</h3>
+        <span class="btn btn--solid">컬렉션 보기</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- 카탈로그 -->
+  <section id="catalog" class="section">
+    <img class="cat-deco cat-deco--l" src="illust/2.png" alt="" aria-hidden="true" decoding="async" />
+    <img class="cat-deco cat-deco--r" src="illust/6.png" alt="" aria-hidden="true" decoding="async" />
+    <img class="cat-deco cat-deco--l2" src="illust/7.png" alt="" aria-hidden="true" decoding="async" />
+    <img class="cat-deco cat-deco--r2" src="illust/9.png" alt="" aria-hidden="true" decoding="async" />
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="kicker">전체 상품</span>
+          <h2 class="section__title">굿즈 <em>라인업</em></h2>
+        </div>
+      </div>
+
+      <div class="gender-tabs" role="tablist" aria-label="라인">
+        <button class="gender-tab is-active" type="button" data-gender="common" role="tab" aria-selected="true">All</button>
+        <button class="gender-tab" type="button" data-gender="man" role="tab" aria-selected="false">Man</button>
+        <button class="gender-tab" type="button" data-gender="woman" role="tab" aria-selected="false">Woman</button>
+      </div>
+
+      <div class="shop-bar">
+        <div class="shop-filters">
+          <div class="fdrop" data-filter="필터">
+            <button class="filter-btn" type="button" aria-expanded="false">필터 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fdrop__menu">
+              <button type="button" class="is-sel">전체 상품</button>
+              <button type="button">신상품</button>
+              <button type="button">베스트</button>
+              <button type="button">세일</button>
+            </div>
+          </div>
+          <div class="fdrop" data-filter="카테고리">
+            <button class="filter-btn" type="button" aria-expanded="false">카테고리 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fdrop__menu">
+              <button type="button" class="is-sel" data-cat="all">전체</button>
+              <button type="button" data-cat="텀블러">텀블러</button>
+              <button type="button" data-cat="티셔츠">티셔츠</button>
+              <button type="button" data-cat="수영복">수영복</button>
+              <button type="button" data-cat="남성 수영복">남성 수영복</button>
+              <button type="button" data-cat="수영모">수영모</button>
+              <button type="button" data-cat="키링">키링</button>
+            </div>
+          </div>
+          <div class="fdrop" data-filter="컬러">
+            <button class="filter-btn" type="button" aria-expanded="false">컬러 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fdrop__menu">
+              <button type="button" class="is-sel">전체</button>
+              <button type="button">블루</button>
+              <button type="button">블랙</button>
+              <button type="button">화이트</button>
+              <button type="button">아이보리</button>
+              <button type="button">네이비</button>
+              <button type="button">그린</button>
+            </div>
+          </div>
+          <div class="fdrop" data-filter="사이즈">
+            <button class="filter-btn" type="button" aria-expanded="false">사이즈 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fdrop__menu">
+              <button type="button" class="is-sel">전체</button>
+              <button type="button">FREE</button>
+              <button type="button">S</button>
+              <button type="button">M</button>
+              <button type="button">L</button>
+              <button type="button">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="shop-meta">
+          <span class="shop-count">전체 36개</span>
+          <div class="fdrop fdrop--right" data-filter="정렬">
+            <button class="filter-btn" type="button" aria-expanded="false">정렬 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div class="fdrop__menu">
+              <button type="button" class="is-sel" data-sort="recommend">추천순</button>
+              <button type="button" data-sort="new">신상품순</button>
+              <button type="button" data-sort="low">낮은 가격순</button>
+              <button type="button" data-sort="high">높은 가격순</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog">
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p01.png" alt="봉그다 텀블러 아이보리" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 텀블러</h3>
+            <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#efe7d2"></span><span style="background:#1c2540"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p04.png" alt="봉그다 텀블러 네이비" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 텀블러</h3>
+            <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1c2540"></span><span style="background:#efe7d2"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p02.png" alt="플로빙 텀블러 네이비" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 텀블러</h3>
+            <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1c2540"></span><span style="background:#efe7d2"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p22.png" alt="플로빙 텀블러 아이보리" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 텀블러</h3>
+            <p class="pcard__price"><span class="pcard__now">32,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#efe7d2"></span><span style="background:#1c2540"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p07.png" alt="플로빙 티셔츠 화이트" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p09.png" alt="플로빙 티셔츠 화이트 블랙" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#0a0a0a"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p13.png" alt="플로빙 위크 티셔츠 화이트" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p03.png" alt="봉그다 티셔츠 블랙" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0a0a0a"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p05.png" alt="플로빙 위크 티셔츠 스타" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#3a3a3a"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p08.png" alt="플로빙 위크 티셔츠 그린" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1f7a6e"></span><span style="background:#eef0a8"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p06.png" alt="플로빙 위크 티셔츠 블루" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#3b5c80"></span><span style="background:#a8e0b0"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p10.png" alt="플로빙 위크 티셔츠 다이버" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p11.png" alt="봉그다 스타 티셔츠 차콜" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 스타 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#3a3a3a"></span><span style="background:#f2c200"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/p12.png" alt="플로빙 위크 티셔츠 블랙" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">플로빙 위크 티셔츠</h3>
+            <p class="pcard__price"><span class="pcard__now">35,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0a0a0a"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/swim1.png" alt="봉그다 수영복 옐로우 도트" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/swim1w.png" alt="봉그다 수영복 옐로우 도트 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#f2e9a0"></span><span style="background:#9fe0e0"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/swim2.png" alt="봉그다 수영복 스타 블루" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/swim2w.png" alt="봉그다 수영복 스타 블루 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0033cc"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/swim3.png" alt="봉그다 수영복 버블 블루" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/swim3w.png" alt="봉그다 수영복 버블 블루 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#bcd9f0"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/swim4.png" alt="봉그다 수영복 스타 블랙" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/swim4w.png" alt="봉그다 수영복 스타 블랙 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0a0a0a"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/swim5.png" alt="봉그다 수영복 스타 네이비" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/swim5w.png" alt="봉그다 수영복 스타 네이비 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">89,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1c3a6e"></span><span style="background:#8fb3e0"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/cap1.png" alt="봉그다 수영모 스카이 스타" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/cap1w.png" alt="봉그다 수영모 스카이 스타 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영모</h3>
+            <p class="pcard__price"><span class="pcard__now">18,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#9fe0ea"></span><span style="background:#f2efb0"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/cap2.png" alt="봉그다 수영모 화이트" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/cap2w.png" alt="봉그다 수영모 화이트 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영모</h3>
+            <p class="pcard__price"><span class="pcard__now">18,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#ffffff"></span><span style="background:#0033cc"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/cap3.png" alt="봉그다 수영모 블루 스타" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/cap3w.png" alt="봉그다 수영모 블루 스타 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영모</h3>
+            <p class="pcard__price"><span class="pcard__now">18,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#3a7bd5"></span><span style="background:#1c3a6e"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/cap4.png" alt="봉그다 수영모 네이비" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/cap4w.png" alt="봉그다 수영모 네이비 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영모</h3>
+            <p class="pcard__price"><span class="pcard__now">18,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1c3a6e"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/cap5.png" alt="봉그다 수영모 블랙" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/cap5w.png" alt="봉그다 수영모 블랙 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 수영모</h3>
+            <p class="pcard__price"><span class="pcard__now">18,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0a0a0a"></span><span style="background:#ffffff"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/mswim1.png" alt="봉그다 남성 수영복 실루엣 그레이" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/mswim1w.png" alt="봉그다 남성 수영복 실루엣 그레이 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 남성 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">99,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#4a5568"></span><span style="background:#0a0a0a"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/mswim2.png" alt="봉그다 남성 수영복 스타 네이비" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/mswim2w.png" alt="봉그다 남성 수영복 스타 네이비 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 남성 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">99,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#1c3a6e"></span><span style="background:#3a7bd5"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/mswim3.png" alt="봉그다 남성 수영복 버블 블루" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/mswim3w.png" alt="봉그다 남성 수영복 버블 블루 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 남성 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">99,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#bcd9f0"></span><span style="background:#0033cc"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/mswim4.png" alt="봉그다 남성 수영복 스프레이 블루" loading="lazy" decoding="async" />
+            <img class="pcard__alt" src="products/mswim4w.png" alt="봉그다 남성 수영복 스프레이 블루 착용" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 남성 수영복</h3>
+            <p class="pcard__price"><span class="pcard__now">99,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0a0a0a"></span><span style="background:#0033cc"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key1.png" alt="봉그다 키링 스타 옐로우" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#f2c200"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key2.png" alt="봉그다 키링 다이버 옐로우" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#f2c200"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key3.png" alt="봉그다 키링 가방 옐로우" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#f2c200"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key4.png" alt="봉그다 키링 플로빙 옐로우" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#f2c200"></span><span style="background:#0000fe"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key5.png" alt="봉그다 키링 줍다 블루" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0000fe"></span><span style="background:#f2c200"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key6.png" alt="봉그다 키링 다이버 블루" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0000fe"></span><span style="background:#f2c200"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key7.png" alt="봉그다 키링 스타 블루" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0000fe"></span><span style="background:#f2c200"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+
+        <a class="pcard reveal" href="#catalog">
+          <div class="pcard__media">
+            <img src="products/key8.png" alt="봉그다 키링 가방 블루" loading="lazy" decoding="async" />
+            <button class="pcard__wish" type="button" aria-label="찜"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+          </div>
+          <div class="pcard__info">
+            <h3 class="pcard__name">봉그다 키링</h3>
+            <p class="pcard__price"><span class="pcard__now">14,000원</span></p>
+            <div class="pcard__swatches" aria-hidden="true"><span style="background:#0000fe"></span><span style="background:#f2c200"></span></div>
+            <button class="pcard__add" type="button" aria-label="담기">+</button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 룩북 (착용 컷) -->
+  <section id="lookbook" class="section" aria-labelledby="lookTitle">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <p class="kicker">Lookbook</p>
+          <h2 id="lookTitle" class="section__title">착용 <em>이미지</em></h2>
+        </div>
+        <div class="look__arrows">
+          <button class="look__arrow" type="button" data-dir="-1" aria-label="이전 착용 이미지">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 4L6 12l9 8z"/></svg>
+          </button>
+          <button class="look__arrow" type="button" data-dir="1" aria-label="다음 착용 이미지">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 4l9 8-9 8z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="look__viewport" id="lookViewport">
+        <div class="look__track">
+          <button class="look__set" type="button" data-wear="lookbook/m01.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m01.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m02.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m02.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m03.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m03.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m04.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m04.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m05.png" data-wear-title="봉그다 스타 티셔츠">
+            <img src="lookbook/m05.png" alt="봉그다 스타 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">봉그다 스타 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m06.png" data-wear-title="플로빙 티셔츠">
+            <img src="lookbook/m06.png" alt="플로빙 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m07.png" data-wear-title="봉그다 스타 티셔츠">
+            <img src="lookbook/m07.png" alt="봉그다 스타 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">봉그다 스타 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m08.png" data-wear-title="봉그다 티셔츠">
+            <img src="lookbook/m08.png" alt="봉그다 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">봉그다 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m09.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m09.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m10.png" data-wear-title="플로빙 위크 티셔츠">
+            <img src="lookbook/m10.png" alt="플로빙 위크 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 위크 티셔츠</span>
+          </button>
+          <button class="look__set" type="button" data-wear="lookbook/m11.png" data-wear-title="플로빙 티셔츠">
+            <img src="lookbook/m11.png" alt="플로빙 티셔츠 착용 컷" decoding="async" />
+            <span class="look__cap">플로빙 티셔츠</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wearview" id="wearView" aria-hidden="true">
+    <div class="wearview__overlay" data-wear-close></div>
+    <button class="wearview__close" type="button" data-wear-close aria-label="닫기">✕</button>
+    <button class="wearview__nav wearview__nav--prev" type="button" id="wearPrev" aria-label="이전 착용샷">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 4L6 12l9 8z"/></svg>
+    </button>
+    <div class="wearview__stage" role="dialog" aria-modal="true" aria-labelledby="wearTitle">
+      <img class="wearview__img" id="wearImg" src="" alt="" decoding="async" />
+      <p class="wearview__cap" id="wearTitle"></p>
+    </div>
+    <button class="wearview__nav wearview__nav--next" type="button" id="wearNext" aria-label="다음 착용샷">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 4l9 8-9 8z"/></svg>
+    </button>
+  </div>
+
+  <!-- 뉴스레터 -->
+  <section id="news" class="news" aria-labelledby="newsTitle">
+    <img class="news__deco news__deco--r" src="illust/1.png" alt="" aria-hidden="true" decoding="async" />
+    <div class="wrap news__inner">
+      <div class="news__text">
+        <h2 id="newsTitle" class="display-kr">봉그다 소식 받기</h2>
+        <p>다음 플로빙 코스 오픈과 신상 굿즈, 단독 세일 소식을 가장 먼저 받아보세요.</p>
+      </div>
+      <form class="news__form" onsubmit="return false;">
+        <div class="news__field">
+          <input type="email" placeholder="이메일 주소" aria-label="이메일 주소" />
+        </div>
+        <button type="submit">구독하기 →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <img class="footer__deco footer__deco--l" src="illust/3.png" alt="" aria-hidden="true" decoding="async" />
+    <img class="footer__deco footer__deco--r" src="illust/8.png" alt="" aria-hidden="true" decoding="async" />
+    <div class="wrap">
+      <div class="footer__top">
+        <div>
+          <img class="footer__logo" src="logo-bongda.png" alt="봉그다" decoding="async" />
+        </div>
+        <div class="footer__col">
+          <h4>쇼핑</h4>
+          <a href="#mostwanted">신상품</a>
+          <a href="#catalog">굿즈</a>
+          <a href="#catalog">패키지</a>
+          <a href="#catalog">세일</a>
+        </div>
+        <div class="footer__col">
+          <h4>고객지원</h4>
+          <a href="#">배송 안내</a>
+          <a href="#">교환·반품</a>
+          <a href="#">자주 묻는 질문</a>
+          <a href="#news">지속가능성</a>
+        </div>
+        <div class="footer__col">
+          <h4>문의</h4>
+          <p>서울특별시 마포구 신촌로2길 19</p>
+          <p>02-1234-5678</p>
+          <a href="#">인스타그램</a>
+          <a href="#">유튜브</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 위시리스트 드로어 -->
+  <div class="wishdrawer" id="wishDrawer" aria-hidden="true">
+    <div class="wishdrawer__overlay" data-wish-close></div>
+    <aside class="wishdrawer__panel" role="dialog" aria-label="위시리스트">
+      <div class="wishdrawer__head">
+        <h3>위시리스트 <span id="wishCount">0</span></h3>
+        <button class="wishdrawer__close" type="button" data-wish-close aria-label="닫기">✕</button>
+      </div>
+      <div class="wishdrawer__body" id="wishList">
+        <p class="wishdrawer__empty">하트를 누른 상품이 여기에 모여요.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 장바구니 드로어 -->
+  <div class="wishdrawer" id="cartDrawer" aria-hidden="true">
+    <div class="wishdrawer__overlay" data-cart-close></div>
+    <aside class="wishdrawer__panel" role="dialog" aria-label="장바구니">
+      <div class="wishdrawer__head">
+        <h3>장바구니 <span id="cartCount">0</span></h3>
+        <button class="wishdrawer__close" type="button" data-cart-close aria-label="닫기">✕</button>
+      </div>
+      <div class="wishdrawer__body" id="cartList">
+        <p class="wishdrawer__empty">장바구니가 비어 있어요.</p>
+      </div>
+      <div class="cartdrawer__foot">
+        <div class="cartdrawer__total"><span>합계</span><strong id="cartTotal">0원</strong></div>
+        <button class="cartdrawer__checkout" type="button" id="cartCheckout">전체 구매하기</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 구매 모달 -->
+  <div class="buy" id="buyModal" aria-hidden="true">
+    <div class="buy__overlay" data-buy-close></div>
+    <div class="buy__box" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+      <button class="buy__close" type="button" data-buy-close aria-label="닫기">✕</button>
+      <h2 class="buy__title" id="buyTitle">제품 구매</h2>
+      <div class="buy__product">
+        <img class="buy__thumb" id="buyImg" src="" alt="" decoding="async" />
+        <div class="buy__meta">
+          <p class="buy__name" id="buyName"></p>
+          <p class="buy__price" id="buyPrice"></p>
+        </div>
+      </div>
+      <div class="buy__row">
+        <span>수량</span>
+        <div class="buy__qty">
+          <button type="button" id="buyQtyMinus" aria-label="수량 줄이기">−</button>
+          <span id="buyQty">1</span>
+          <button type="button" id="buyQtyPlus" aria-label="수량 늘리기">+</button>
+        </div>
+      </div>
+      <p class="buy__total">결제 금액<strong id="buyTotal">0원</strong></p>
+      <button class="buy__submit" type="button" id="buySubmit">구매하기</button>
+      <button class="buy__cartbtn" type="button" id="buyCartBtn">장바구니 담기</button>
+      <p class="buy__hint">제품을 더블클릭하면 구매 창이 열려요.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 로그인 모달 -->
+  <div class="login" id="loginModal" aria-hidden="true">
+    <div class="login__overlay" data-login-close></div>
+    <div class="login__box" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="login__close" type="button" data-login-close aria-label="닫기">✕</button>
+      <img class="login__logo" src="logo-bongda-blue.png" alt="봉그다" decoding="async" />
+      <h2 class="login__title" id="loginTitle">로그인</h2>
+      <p class="login__sub">봉그다에 오신 것을 환영합니다.</p>
+      <form id="loginForm" onsubmit="return false;">
+        <div class="login__field">
+          <label for="loginEmail">이메일</label>
+          <input type="email" id="loginEmail" placeholder="이메일 주소" autocomplete="email" required />
+        </div>
+        <div class="login__field">
+          <label for="loginPw">비밀번호</label>
+          <input type="password" id="loginPw" placeholder="비밀번호" autocomplete="current-password" required />
+        </div>
+        <div class="login__row">
+          <label><input type="checkbox" /> 로그인 유지</label>
+          <a href="#">비밀번호 찾기</a>
+        </div>
+        <button class="login__submit" type="submit">로그인</button>
+      </form>
+      <p class="login__foot">아직 회원이 아니신가요? <a href="#">회원가입</a></p>
+    </div>
+  </div>
+
+  <script>
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.addEventListener("load", () => window.scrollTo(0, 0));
+    window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
+
+    (function () {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const items = document.querySelectorAll(".reveal, .cat-deco");
+      if (reduce || !("IntersectionObserver" in window)) {
+        items.forEach((el) => el.classList.add("in"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (!e.isIntersecting) return;
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        items.forEach((el) => io.observe(el));
+      }
+
+      // ===== 위시리스트 =====
+      const WKEY = "bongda_wishlist";
+      let wish = {};
+      try { wish = JSON.parse(localStorage.getItem(WKEY)) || {}; } catch (_) { wish = {}; }
+      const saveWish = () => { try { localStorage.setItem(WKEY, JSON.stringify(wish)); } catch (_) {} };
+
+      const wishListEl = document.getElementById("wishList");
+      const wishBadge = document.getElementById("wishBadge");
+      const wishCount = document.getElementById("wishCount");
+      const wishDrawer = document.getElementById("wishDrawer");
+
+      function cardPrice(card) {
+        const el = card.querySelector(".pcard__now") || card.querySelector(".pcard__price");
+        return el ? el.textContent.trim() : "";
+      }
+
+      function priceNum(text) {
+        return parseInt(String(text || "0").replace(/[^0-9]/g, ""), 10) || 0;
+      }
+
+      function formatWon(n) {
+        return n.toLocaleString("ko-KR") + "원";
+      }
+
+      function dataFromCard(card) {
+        if (!card) return null;
+        const img = card.querySelector(".pcard__media img:not(.pcard__alt)");
+        const name = (card.querySelector(".pcard__name") || {}).textContent || "상품";
+        const price = cardPrice(card);
+        const src = img ? img.getAttribute("src") : name;
+        return { src, name: name.trim(), price, unitPrice: priceNum(price) };
+      }
+
+      function dataFromBtn(b) {
+        return dataFromCard(b.closest(".pcard"));
+      }
+
+      function syncHearts() {
+        document.querySelectorAll(".pcard__wish").forEach((b) => {
+          const d = dataFromBtn(b);
+          if (d && wish[d.src]) b.classList.add("is-on");
+          else b.classList.remove("is-on");
+        });
+      }
+
+      function renderWish() {
+        const keys = Object.keys(wish);
+        if (wishBadge) {
+          wishBadge.textContent = keys.length;
+          wishBadge.classList.toggle("show", keys.length > 0);
+        }
+        if (wishCount) wishCount.textContent = keys.length;
+        if (!wishListEl) return;
+        if (!keys.length) {
+          wishListEl.innerHTML = '<p class="wishdrawer__empty">하트를 누른 상품이 여기에 모여요.</p>';
+          return;
+        }
+        wishListEl.innerHTML = keys
+          .map((k) => {
+            const it = wish[k];
+            return (
+              '<div class="wishitem" data-src="' + k + '">' +
+              '<img class="wishitem__img" src="' + it.src + '" alt="" decoding="async" />' +
+              '<div class="wishitem__info"><p class="wishitem__name">' + it.name + '</p>' +
+              '<p class="wishitem__price">' + it.price + '</p></div>' +
+              '<button class="wishitem__remove" type="button" aria-label="삭제" data-remove="' + k + '">✕</button>' +
+              '</div>'
+            );
+          })
+          .join("");
+      }
+
+      function toggleWish(src, info, on) {
+        if (on) wish[src] = info;
+        else delete wish[src];
+        saveWish();
+        renderWish();
+      }
+
+      syncHearts();
+      renderWish();
+
+      document.querySelectorAll(".pcard__wish").forEach((b) => {
+        b.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const d = dataFromBtn(b);
+          const on = b.classList.toggle("is-on");
+          if (on) {
+            b.classList.remove("pop");
+            void b.offsetWidth;
+            b.classList.add("pop");
+            setTimeout(() => b.classList.remove("pop"), 600);
+          }
+          if (d) {
+            toggleWish(d.src, d, on);
+            // 같은 상품의 다른 하트 버튼도 동기화
+            document.querySelectorAll(".pcard__wish").forEach((other) => {
+              if (other === b) return;
+              const od = dataFromBtn(other);
+              if (od && od.src === d.src) other.classList.toggle("is-on", on);
+            });
+          }
+        });
+      });
+
+      document.querySelectorAll(".pcard__add").forEach((b) => {
+        b.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const d = dataFromBtn(b);
+          if (d) addToCart(d, 1);
+        });
+      });
+
+      // ===== 장바구니 & 구매 =====
+      const CKEY = "bongda_cart";
+      let cart = {};
+      try { cart = JSON.parse(localStorage.getItem(CKEY)) || {}; } catch (_) { cart = {}; }
+      const saveCart = () => { try { localStorage.setItem(CKEY, JSON.stringify(cart)); } catch (_) {} };
+
+      const buyModal = document.getElementById("buyModal");
+      const buyImg = document.getElementById("buyImg");
+      const buyName = document.getElementById("buyName");
+      const buyPrice = document.getElementById("buyPrice");
+      const buyQtyEl = document.getElementById("buyQty");
+      const buyTotalEl = document.getElementById("buyTotal");
+      const buySubmit = document.getElementById("buySubmit");
+      const buyCartBtn = document.getElementById("buyCartBtn");
+      const buyQtyMinus = document.getElementById("buyQtyMinus");
+      const buyQtyPlus = document.getElementById("buyQtyPlus");
+      const cartDrawer = document.getElementById("cartDrawer");
+      const cartListEl = document.getElementById("cartList");
+      const cartBadge = document.getElementById("cartBadge");
+      const cartCountEl = document.getElementById("cartCount");
+      const cartTotalEl = document.getElementById("cartTotal");
+      const cartCheckout = document.getElementById("cartCheckout");
+      const toastEl = document.getElementById("toast");
+      let buyItem = null;
+      let buyQty = 1;
+      let toastTimer = null;
+
+      function showToast(msg) {
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2400);
+      }
+
+      function cartQtyTotal() {
+        return Object.values(cart).reduce((s, it) => s + it.qty, 0);
+      }
+
+      function cartPriceTotal() {
+        return Object.values(cart).reduce((s, it) => s + it.unitPrice * it.qty, 0);
+      }
+
+      function renderCart() {
+        const keys = Object.keys(cart);
+        const totalQty = cartQtyTotal();
+        if (cartBadge) {
+          cartBadge.textContent = totalQty;
+          cartBadge.classList.toggle("show", totalQty > 0);
+        }
+        if (cartCountEl) cartCountEl.textContent = totalQty;
+        if (cartTotalEl) cartTotalEl.textContent = formatWon(cartPriceTotal());
+        if (!cartListEl) return;
+        if (!keys.length) {
+          cartListEl.innerHTML = '<p class="wishdrawer__empty">장바구니가 비어 있어요.</p>';
+          return;
+        }
+        cartListEl.innerHTML = keys
+          .map((k) => {
+            const it = cart[k];
+            return (
+              '<div class="wishitem" data-src="' + k + '">' +
+              '<img class="wishitem__img" src="' + it.src + '" alt="" decoding="async" />' +
+              '<div class="wishitem__info"><p class="wishitem__name">' + it.name + '</p>' +
+              '<p class="wishitem__price">' + it.price + '</p>' +
+              '<p class="cartitem__qty">수량 ' + it.qty + '개</p></div>' +
+              '<button class="wishitem__remove" type="button" aria-label="삭제" data-cart-remove="' + k + '">✕</button>' +
+              '</div>'
+            );
+          })
+          .join("");
+      }
+
+      function addToCart(item, qty) {
+        if (!item) return;
+        const key = item.src;
+        if (cart[key]) cart[key].qty += qty;
+        else cart[key] = { src: item.src, name: item.name, price: item.price, unitPrice: item.unitPrice, qty: qty };
+        saveCart();
+        renderCart();
+        showToast("장바구니에 담았어요.");
+      }
+
+      function updateBuyTotal() {
+        if (!buyItem || !buyTotalEl) return;
+        buyTotalEl.textContent = formatWon(buyItem.unitPrice * buyQty);
+      }
+
+      function openBuy(item) {
+        if (!buyModal || !item) return;
+        buyItem = item;
+        buyQty = 1;
+        if (buyImg) { buyImg.src = item.src; buyImg.alt = item.name; }
+        if (buyName) buyName.textContent = item.name;
+        if (buyPrice) buyPrice.textContent = item.price;
+        if (buyQtyEl) buyQtyEl.textContent = "1";
+        updateBuyTotal();
+        buyModal.classList.add("open");
+        buyModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeBuy() {
+        if (!buyModal) return;
+        buyModal.classList.remove("open");
+        buyModal.setAttribute("aria-hidden", "true");
+        buyItem = null;
+      }
+
+      const openCart = () => { if (cartDrawer) { renderCart(); cartDrawer.classList.add("open"); cartDrawer.setAttribute("aria-hidden", "false"); } };
+      const closeCart = () => { if (cartDrawer) { cartDrawer.classList.remove("open"); cartDrawer.setAttribute("aria-hidden", "true"); } };
+
+      document.querySelectorAll(".pcard").forEach((card) => {
+        card.addEventListener("dblclick", (e) => {
+          e.preventDefault();
+          const d = dataFromCard(card);
+          if (d) openBuy(d);
+        });
+      });
+
+      if (buyQtyMinus) buyQtyMinus.addEventListener("click", () => {
+        buyQty = Math.max(1, buyQty - 1);
+        if (buyQtyEl) buyQtyEl.textContent = String(buyQty);
+        updateBuyTotal();
+      });
+      if (buyQtyPlus) buyQtyPlus.addEventListener("click", () => {
+        buyQty = Math.min(99, buyQty + 1);
+        if (buyQtyEl) buyQtyEl.textContent = String(buyQty);
+        updateBuyTotal();
+      });
+      if (buySubmit) buySubmit.addEventListener("click", () => {
+        if (!buyItem) return;
+        showToast(buyItem.name + " 구매가 완료되었어요.");
+        closeBuy();
+      });
+      if (buyCartBtn) buyCartBtn.addEventListener("click", () => {
+        if (!buyItem) return;
+        addToCart(buyItem, buyQty);
+        closeBuy();
+      });
+      document.querySelectorAll("[data-buy-close]").forEach((el) => el.addEventListener("click", closeBuy));
+
+      const cartOpenBtn = document.getElementById("cartOpen");
+      if (cartOpenBtn) cartOpenBtn.addEventListener("click", (e) => { e.preventDefault(); openCart(); });
+      document.querySelectorAll("[data-cart-close]").forEach((el) => el.addEventListener("click", closeCart));
+      if (cartListEl) {
+        cartListEl.addEventListener("click", (e) => {
+          const rm = e.target.closest("[data-cart-remove]");
+          if (!rm) return;
+          delete cart[rm.getAttribute("data-cart-remove")];
+          saveCart();
+          renderCart();
+        });
+      }
+      if (cartCheckout) cartCheckout.addEventListener("click", () => {
+        if (!Object.keys(cart).length) { showToast("장바구니가 비어 있어요."); return; }
+        showToast("총 " + formatWon(cartPriceTotal()) + " 구매가 완료되었어요.");
+        cart = {};
+        saveCart();
+        renderCart();
+        closeCart();
+      });
+
+      renderCart();
+
+      // 드로어 열기/닫기
+      const openWish = () => { if (wishDrawer) { wishDrawer.classList.add("open"); wishDrawer.setAttribute("aria-hidden", "false"); } };
+      const closeWish = () => { if (wishDrawer) { wishDrawer.classList.remove("open"); wishDrawer.setAttribute("aria-hidden", "true"); } };
+      const wishOpenBtn = document.getElementById("wishOpen");
+      if (wishOpenBtn) wishOpenBtn.addEventListener("click", (e) => { e.preventDefault(); renderWish(); openWish(); });
+      document.querySelectorAll("[data-wish-close]").forEach((el) => el.addEventListener("click", closeWish));
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        closeWish();
+        closeCart();
+        closeBuy();
+        closeLogin();
+      });
+
+      // 드로어 내 삭제
+      if (wishListEl) {
+        wishListEl.addEventListener("click", (e) => {
+          const rm = e.target.closest("[data-remove]");
+          if (!rm) return;
+          const src = rm.getAttribute("data-remove");
+          delete wish[src];
+          saveWish();
+          renderWish();
+          syncHearts();
+        });
+      }
+
+      // ===== 로그인 모달 =====
+      const loginModal = document.getElementById("loginModal");
+      const loginOpenBtn = document.getElementById("loginOpen");
+      const openLogin = () => { if (loginModal) { loginModal.classList.add("open"); loginModal.setAttribute("aria-hidden", "false"); const f = document.getElementById("loginEmail"); if (f) setTimeout(() => f.focus(), 60); } };
+      const closeLogin = () => { if (loginModal) { loginModal.classList.remove("open"); loginModal.setAttribute("aria-hidden", "true"); } };
+      if (loginOpenBtn) loginOpenBtn.addEventListener("click", (e) => { e.preventDefault(); openLogin(); });
+      document.querySelectorAll("[data-login-close]").forEach((el) => el.addEventListener("click", closeLogin));
+      const loginForm = document.getElementById("loginForm");
+      if (loginForm) loginForm.addEventListener("submit", () => { closeLogin(); });
+
+      // Most Wanted 캐러셀 화살표
+      const vp = document.getElementById("mwViewport");
+      if (vp) {
+        document.querySelectorAll(".mw__arrow").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const dir = parseInt(btn.getAttribute("data-dir"), 10) || 1;
+            const card = vp.querySelector(".pcard");
+            const step = card ? card.getBoundingClientRect().width : 280;
+            vp.scrollBy({ left: dir * step * 2, behavior: "smooth" });
+          });
+        });
+        vp.addEventListener(
+          "wheel",
+          (e) => {
+            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+            vp.scrollLeft += e.deltaY;
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+      }
+
+      // 착용 이미지: 클릭 드래그로 좌우 넘기기
+      const look = document.getElementById("lookViewport");
+      if (look) {
+        let down = false, startX = 0, startLeft = 0, moved = 0;
+        look.addEventListener("pointerdown", (e) => {
+          down = true;
+          moved = 0;
+          startX = e.clientX;
+          startLeft = look.scrollLeft;
+          look.classList.add("dragging");
+          look.setPointerCapture(e.pointerId);
+        });
+        look.addEventListener("pointermove", (e) => {
+          if (!down) return;
+          const dx = e.clientX - startX;
+          moved = Math.max(moved, Math.abs(dx));
+          look.scrollLeft = startLeft - dx;
+        });
+        const end = (e) => {
+          if (!down) return;
+          down = false;
+          look.classList.remove("dragging");
+          try { look.releasePointerCapture(e.pointerId); } catch (_) {}
+        };
+        look.addEventListener("pointerup", end);
+        look.addEventListener("pointercancel", end);
+        look.addEventListener("pointerleave", end);
+        // 드래그 중 링크 클릭 방지
+        look.querySelectorAll(".look__set").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            if (moved > 6) { e.preventDefault(); return; }
+            const src = a.getAttribute("data-wear");
+            if (!src) return;
+            e.preventDefault();
+            openWear(a);
+          });
+        });
+        // 상단 화살표 버튼으로 넘기기
+        document.querySelectorAll(".look__arrow").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const dir = parseInt(btn.getAttribute("data-dir"), 10) || 1;
+            const item = look.querySelector(".look__set");
+            const track = look.querySelector(".look__track");
+            const gap = track ? parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16 : 16;
+            const step = item ? item.getBoundingClientRect().width + gap : 300;
+            look.scrollBy({ left: dir * step * 2, behavior: "smooth" });
+          });
+        });
+        // 가로 휠 스크롤 지원
+        look.addEventListener(
+          "wheel",
+          (e) => {
+            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+            look.scrollLeft += e.deltaY;
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+      }
+
+      const wearView = document.getElementById("wearView");
+      const wearImg = document.getElementById("wearImg");
+      const wearTitle = document.getElementById("wearTitle");
+      const wearItems = Array.from(document.querySelectorAll(".look__set[data-wear]"));
+      let wearIndex = 0;
+
+      function showWear(index) {
+        if (!wearItems.length) return;
+        wearIndex = (index + wearItems.length) % wearItems.length;
+        const item = wearItems[wearIndex];
+        const src = item.getAttribute("data-wear") || "";
+        const title = item.getAttribute("data-wear-title") || "";
+        const img = item.querySelector("img");
+        if (wearImg) {
+          wearImg.src = src;
+          wearImg.alt = img ? img.getAttribute("alt") || title : title;
+        }
+        if (wearTitle) wearTitle.textContent = title;
+      }
+
+      function openWear(item) {
+        if (!wearView || !item) return;
+        const idx = wearItems.indexOf(item);
+        showWear(idx < 0 ? 0 : idx);
+        wearView.classList.add("open");
+        wearView.setAttribute("aria-hidden", "false");
+        document.body.classList.add("wear-open");
+      }
+
+      function closeWear() {
+        if (!wearView) return;
+        wearView.classList.remove("open");
+        wearView.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("wear-open");
+      }
+
+      document.querySelectorAll("[data-wear-close]").forEach((el) => {
+        el.addEventListener("click", closeWear);
+      });
+      const wearPrev = document.getElementById("wearPrev");
+      const wearNext = document.getElementById("wearNext");
+      if (wearPrev) wearPrev.addEventListener("click", () => showWear(wearIndex - 1));
+      if (wearNext) wearNext.addEventListener("click", () => showWear(wearIndex + 1));
+      document.addEventListener("keydown", (e) => {
+        if (!wearView || !wearView.classList.contains("open")) return;
+        if (e.key === "Escape") closeWear();
+        if (e.key === "ArrowLeft") showWear(wearIndex - 1);
+        if (e.key === "ArrowRight") showWear(wearIndex + 1);
+      });
+
+      // 필터 드롭다운
+      const fdrops = document.querySelectorAll(".fdrop");
+      const catalogEl = document.querySelector(".catalog");
+      const cards = catalogEl ? Array.from(catalogEl.querySelectorAll(".pcard")) : [];
+      const origOrder = cards.slice();
+      const countEl = document.querySelector(".shop-count");
+
+      function closeAll(except) {
+        fdrops.forEach((d) => {
+          if (d === except) return;
+          d.classList.remove("open");
+          const b = d.querySelector(".filter-btn");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      }
+
+      function markSel(opt) {
+        const menu = opt.closest(".fdrop__menu");
+        menu.querySelectorAll("button").forEach((b) => b.classList.remove("is-sel"));
+        opt.classList.add("is-sel");
+      }
+
+      function updateCount() {
+        if (!countEl) return;
+        const n = cards.filter((c) => c.style.display !== "none").length;
+        countEl.textContent = n === cards.length ? "전체 " + n + "개" : n + "개";
+      }
+
+      fdrops.forEach((d) => {
+        const btn = d.querySelector(".filter-btn");
+        if (!btn) return;
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const willOpen = !d.classList.contains("open");
+          closeAll(d);
+          d.classList.toggle("open", willOpen);
+          btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        });
+      });
+      document.addEventListener("click", () => closeAll(null));
+
+      // 라인(공용 / Man / Woman) + 카테고리 필터
+      // 수영복만 Man / Woman 으로 나누고, 그 외 상품은 공용으로 분리
+      let curCat = "all";
+      let curGender = "common";
+      function applyFilters() {
+        cards.forEach((c) => {
+          const name = (c.querySelector(".pcard__name") || {}).textContent || "";
+          const isSwim = name.indexOf("수영복") !== -1;
+          const isMenSwim = isSwim && name.indexOf("남성") !== -1;
+          const isWomenSwim = isSwim && name.indexOf("남성") === -1;
+          let genderOk;
+          if (curGender === "man") genderOk = isMenSwim;
+          else if (curGender === "woman") genderOk = isWomenSwim;
+          else genderOk = !isSwim; // 공용: 수영복이 아닌 모든 상품
+          const catOk = curCat === "all" || name.indexOf(curCat) !== -1;
+          c.style.display = genderOk && catOk ? "" : "none";
+        });
+        updateCount();
+      }
+
+      document.querySelectorAll('.fdrop[data-filter="카테고리"] .fdrop__menu button').forEach((opt) => {
+        opt.addEventListener("click", (e) => {
+          e.stopPropagation();
+          curCat = opt.getAttribute("data-cat");
+          applyFilters();
+          markSel(opt);
+          closeAll(null);
+        });
+      });
+
+      // 성별(Man / Woman) 라인 토글
+      document.querySelectorAll(".gender-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          curGender = tab.getAttribute("data-gender");
+          document.querySelectorAll(".gender-tab").forEach((t) => {
+            const on = t === tab;
+            t.classList.toggle("is-active", on);
+            t.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          applyFilters();
+        });
+      });
+
+      applyFilters();
+
+      // 정렬
+      const priceOf = (c) => parseInt(((c.querySelector(".pcard__now") || {}).textContent || "0").replace(/[^0-9]/g, ""), 10) || 0;
+      document.querySelectorAll('.fdrop[data-filter="정렬"] .fdrop__menu button').forEach((opt) => {
+        opt.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const s = opt.getAttribute("data-sort");
+          let arr = cards.slice();
+          if (s === "low") arr.sort((a, b) => priceOf(a) - priceOf(b));
+          else if (s === "high") arr.sort((a, b) => priceOf(b) - priceOf(a));
+          else if (s === "new") arr = origOrder.slice().reverse();
+          else arr = origOrder.slice();
+          arr.forEach((c) => catalogEl.appendChild(c));
+          markSel(opt);
+          closeAll(null);
+        });
+      });
+
+      // 라벨 전용 드롭다운 (필터 / 컬러 / 사이즈)
+      document
+        .querySelectorAll('.fdrop[data-filter="필터"] .fdrop__menu button, .fdrop[data-filter="컬러"] .fdrop__menu button, .fdrop[data-filter="사이즈"] .fdrop__menu button')
+        .forEach((opt) => {
+          opt.addEventListener("click", (e) => {
+            e.stopPropagation();
+            markSel(opt);
+            closeAll(null);
+          });
+        });
+    })();
+  </script>
+</body>
+</html>
