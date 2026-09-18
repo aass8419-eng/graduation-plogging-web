@@ -779,6 +779,13 @@
     .story-shots__frame {
       background: #000;
     }
+    .story-shots__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
     .story-shots--hero .story-shots__frame {
       aspect-ratio: 16 / 9;
       overflow: hidden;
@@ -1175,7 +1182,9 @@
         <div class="story-detail__panels">
           <div class="story-shots story-shots--hero">
             <figure>
-              <div class="story-shots__frame" aria-hidden="true"></div>
+              <div class="story-shots__frame">
+                <img src="story-illust/haenyeo-hero.jpg" alt="해녀와 함께 해안에서 플로빙하며 쓰레기를 줍는 모습" loading="lazy" decoding="async" />
+              </div>
             </figure>
           </div>
         </div>

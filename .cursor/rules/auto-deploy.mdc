@@ -1,0 +1,31 @@
+---
+description: 이 프로젝트 파일 수정 후 GitHub에 자동 반영(커밋·푸시)하여 사이트 업데이트
+alwaysApply: true
+---
+
+# 자동 배포 규칙 (GitHub Pages)
+
+이 프로젝트는 GitHub Pages로 배포된 웹사이트입니다.
+- 저장소: `aass8419-eng/graduation-plogging-web`
+- 라이브 사이트: https://aass8419-eng.github.io/graduation-plogging-web/
+- 메인 페이지: `졸업연구 플로빙 2차.html` (루트의 `index.html`이 자동 리다이렉트)
+
+## 필수 동작
+
+이 폴더의 파일(HTML/CSS/JS/이미지 등)을 **수정, 추가, 삭제한 뒤에는 반드시 자동으로**
+아래 순서로 GitHub에 반영해서 라이브 사이트를 업데이트한다. 사용자가 별도로 요청하지
+않아도 변경 작업이 끝나면 곧바로 실행한다.
+
+```powershell
+$env:Path = "C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI;" + $env:Path
+git add -A
+git commit -m "<변경 내용을 한국어로 간단히>"
+git push
+```
+
+## 주의사항
+
+- `git`이 새 셸의 PATH에 없을 수 있으므로 위처럼 `$env:Path` 앞부분에 Git 경로를 추가한다.
+- 푸시 후 사이트 반영에는 약 1~2분이 걸린다는 점을 사용자에게 알려준다.
+- 커밋 메시지는 실제 변경 내용을 반영해 한국어로 간단명료하게 작성한다.
+- 푸시가 끝나면 사용자에게 완료 사실과 사이트 링크를 알려준다.
