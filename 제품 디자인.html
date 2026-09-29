@@ -210,6 +210,23 @@
     .cell--ink { background: var(--ink); }
     .cell--paper { background: #f3f3f1; }
 
+    /* PRODUCT WALL (auto-fill) */
+    .wall { padding: clamp(40px, 7vw, 110px) 0; }
+    .wall__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 20vw, 230px), 1fr));
+      gap: clamp(8px, 1.4vw, 18px);
+    }
+
+    /* SCATTER on dark */
+    .scatter--dark {
+      background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 40px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 40px),
+        var(--ink);
+    }
+    .scatter--dark .scatter__item { filter: drop-shadow(0 22px 34px rgba(0,0,0,0.55)); }
+
     /* BIG DRAPE */
     .drape {
       position: relative;
@@ -321,18 +338,18 @@
     </div>
   </section>
 
-  <!-- SCATTER CLUSTER -->
-  <section class="scatter">
+  <!-- SCATTER CLUSTER : 키링 8종 -->
+  <section class="scatter scatter--dark">
     <div class="wrap">
       <div class="scatter__grid">
-        <div class="scatter__item"><img src="products/tumbler-star-black.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/p05.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/key5.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="1x/티셔츠 1.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/tumbler-ploving-white.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/cap1.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/key1.png" alt="" decoding="async" /></div>
-        <div class="scatter__item"><img src="products/p08.png" alt="" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g01.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g02.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g03.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g04.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g05.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g06.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g07.png" alt="봉그다 키링" decoding="async" /></div>
+        <div class="scatter__item"><img src="goods2/g08.png" alt="봉그다 키링" decoding="async" /></div>
       </div>
     </div>
   </section>
@@ -353,33 +370,72 @@
     </div>
   </section>
 
-  <!-- COLOR GRID -->
-  <section class="grid">
+  <!-- WALL 1 : 래시가드 · 수영복 · 반바지 11종 -->
+  <section class="wall">
     <div class="wrap">
-      <div class="grid__inner">
-        <div class="cell cell--magenta reveal"><img src="products/cap1.png" alt="" decoding="async" /></div>
-        <div class="cell cell--cyan reveal"><img src="products/key1.png" alt="" decoding="async" /></div>
-        <div class="cell cell--yellow reveal"><img src="products/cap2.png" alt="" decoding="async" /></div>
-        <div class="cell cell--volt reveal"><img src="products/key3.png" alt="" decoding="async" /></div>
-        <div class="cell cell--yellow reveal"><img src="products/cap3.png" alt="" decoding="async" /></div>
-        <div class="cell cell--magenta reveal"><img src="products/key5.png" alt="" decoding="async" /></div>
-        <div class="cell cell--cyan reveal"><img src="products/cap4.png" alt="" decoding="async" /></div>
-        <div class="cell cell--paper reveal"><img src="products/p01.png" alt="" decoding="async" /></div>
+      <div class="wall__inner">
+        <div class="cell cell--yellow reveal"><img src="goods2/g16.png" alt="봉그다 수영복" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g09.png" alt="봉그다 래시가드" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g10.png" alt="봉그다 래시가드" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g11.png" alt="봉그다 래시가드" decoding="async" /></div>
+        <div class="cell cell--yellow reveal"><img src="goods2/g12.png" alt="봉그다 수영 반바지" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g14.png" alt="봉그다 수영 반바지" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g13.png" alt="봉그다 래시가드" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g15.png" alt="봉그다 수영복" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g17.png" alt="봉그다 수영복" decoding="async" /></div>
+        <div class="cell cell--yellow reveal"><img src="goods2/g18.png" alt="봉그다 수영복" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g19.png" alt="봉그다 수영복" decoding="async" /></div>
       </div>
     </div>
   </section>
 
-  <!-- BIG DRAPE -->
-  <section class="drape">
-    <div class="drape__inner">
-      <div class="drape__swatches reveal">
-        <div class="drape__swatch"><img src="products/cap3.png" alt="" decoding="async" /></div>
-        <div class="drape__swatch"><img src="products/cap1.png" alt="" decoding="async" /></div>
-        <div class="drape__swatch"><img src="products/key1.png" alt="" decoding="async" /></div>
-        <div class="drape__swatch"><img src="products/swim1.png" alt="" decoding="async" /></div>
+  <!-- WALL 2 : 수영모 5종 · 텀블러 4종 -->
+  <section class="wall">
+    <div class="wrap">
+      <div class="wall__inner">
+        <div class="cell cell--yellow reveal"><img src="goods2/g20.png" alt="봉그다 수영모" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g21.png" alt="봉그다 수영모" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g22.png" alt="봉그다 수영모" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g23.png" alt="봉그다 수영모" decoding="async" /></div>
+        <div class="cell cell--yellow reveal"><img src="goods2/g24.png" alt="봉그다 수영모" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g25.png" alt="봉그다 텀블러" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g27.png" alt="봉그다 텀블러" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g28.png" alt="봉그다 텀블러" decoding="async" /></div>
+        <div class="cell cell--yellow reveal"><img src="goods2/g29.png" alt="봉그다 텀블러" decoding="async" /></div>
       </div>
-      <div class="drape__hero reveal">
-        <img src="lookbook/m05.png" alt="" decoding="async" />
+    </div>
+  </section>
+
+  <!-- TAPE MARQUEE 2 -->
+  <section class="tape" aria-hidden="true">
+    <div class="tape__band tape__band--2">
+      <div class="tape__track">
+        <span>bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★</span>
+        <span>bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★</span>
+      </div>
+    </div>
+    <div class="tape__band tape__band--1">
+      <div class="tape__track tape__track--r">
+        <span>★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving</span>
+        <span>★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving ★ bongda ★ ploving</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WALL 3 : 티셔츠 10종 -->
+  <section class="wall">
+    <div class="wrap">
+      <div class="wall__inner">
+        <div class="cell cell--yellow reveal"><img src="goods2/g26.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g30.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g31.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--yellow reveal"><img src="goods2/g32.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g33.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g34.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g35.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--magenta reveal"><img src="goods2/g36.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--volt reveal"><img src="goods2/g37.png" alt="봉그다 티셔츠" decoding="async" /></div>
+        <div class="cell cell--cyan reveal"><img src="goods2/g38.png" alt="봉그다 티셔츠" decoding="async" /></div>
       </div>
     </div>
   </section>
