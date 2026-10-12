@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>영상 반복</title>
+  <style>
+    :root {
+      --ink: #f4f4f2;
+      --muted: rgba(244, 244, 242, 0.62);
+      --blue: #0000fe;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+      opacity: 0;
+    }
+
+    video.is-on { opacity: 1; }
+
+    .hud {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 28px 24px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+      pointer-events: none;
+    }
+
+    .now {
+      min-width: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .badge i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 0 rgba(0, 0, 254, 0.7);
+      animation: pulse 1.8s ease-out infinite;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(18px, 2.4vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      word-break: keep-all;
+    }
+
+    .sound {
+      pointer-events: auto;
+      flex-shrink: 0;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: #fff;
+      color: #0a0a0a;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sound:hover { background: #e8e8ff; }
+
+    .start {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .start[hidden] { display: none; }
+
+    .start button {
+      border: 0;
+      border-radius: 999px;
+      padding: 18px 36px;
+      background: var(--blue);
+      color: #fff;
+      font: inherit;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+    }
+
+    .error {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      background: #000;
+    }
+
+    .error[hidden] { display: none; }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 8px rgba(0, 0, 254, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 0, 254, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <video id="v0" playsinline preload="auto"></video>
+    <video id="v1" playsinline preload="auto"></video>
+
+    <div class="start" id="start" hidden>
+      <button type="button" id="startBtn">재생 시작</button>
+    </div>
+
+    <div class="hud">
+      <div class="now">
+        <div class="badge"><i></i> RANDOM</div>
+        <p class="title" id="title">영상을 불러오는 중</p>
+        <p class="sub" id="sub">한 편이 끝나면 다음 영상이 이어집니다</p>
+      </div>
+      <button class="sound" id="sound" type="button">소리 켜기</button>
+    </div>
+
+    <div class="error" id="error" hidden>
+      <p>영상을 불러오지 못했습니다. 이 HTML 파일과 영상 파일이 같은 폴더에 있는지 확인해 주세요.</p>
+    </div>
+  </div>
+
+  <script>
+    const sources = [
+      "0917 포스터.mp4",
+      "0923 라운드.mp4",
+      "0923 -2.mp4",
+      "마지막1012.mp4",
+      "첫번째 플로빙 1012.mp4",
+      "1012-1 플로빙.mp4",
+      "모델4.mp4",
+      "0911 4명.mp4"
+    ];
+
+    const players = [document.getElementById("v0"), document.getElementById("v1")];
+    const titleEl = document.getElementById("title");
+    const soundBtn = document.getElementById("sound");
+    const startEl = document.getElementById("start");
+    const errorEl = document.getElementById("error");
+
+    let active = 0;
+    let muted = true;
+    let queue = [];
+    let lastName = "";
+    let failStreak = 0;
+    let started = false;
+
+    function shuffle(list) {
+      const next = list.slice();
+      for (let i = next.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [next[i], next[j]] = [next[j], next[i]];
+      }
+      return next;
+    }
+
+    function takeNext() {
+      if (queue.length === 0) {
+        queue = shuffle(sources);
+        if (queue.length > 1 && queue[0] === lastName) {
+          const swapAt = 1 + Math.floor(Math.random() * (queue.length - 1));
+          [queue[0], queue[swapAt]] = [queue[swapAt], queue[0]];
+        }
+      }
+      lastName = queue.shift();
+      return lastName;
+    }
+
+    function labelOf(name) {
+      return name.replace(/\.mp4$/i, "");
+    }
+
+    function loadInto(video, name) {
+      video.dataset.name = name;
+      video.src = new URL(name, document.baseURI).href;
+      video.load();
+    }
+
+    function showTitle(video) {
+      titleEl.textContent = labelOf(video.dataset.name || "");
+    }
+
+    function armStandby() {
+      loadInto(players[1 - active], takeNext());
+    }
+
+    function playCurrent() {
+      const current = players[active];
+      const other = players[1 - active];
+      current.muted = muted;
+      other.pause();
+      players.forEach((video, index) => {
+        video.classList.toggle("is-on", index === active);
+      });
+      showTitle(current);
+      const pending = current.play();
+      if (pending) {
+        pending.then(() => {
+          failStreak = 0;
+          started = true;
+          startEl.hidden = true;
+        }).catch(() => {
+          if (!started) startEl.hidden = false;
+        });
+      }
+    }
+
+    function advance() {
+      active = 1 - active;
+      playCurrent();
+      armStandby();
+    }
+
+    function onEnded(event) {
+      if (event.target !== players[active]) return;
+      advance();
+    }
+
+    function onError(event) {
+      if (event.target !== players[active]) return;
+      failStreak += 1;
+      if (failStreak > sources.length) {
+        errorEl.hidden = false;
+        return;
+      }
+      advance();
+    }
+
+    players.forEach((video) => {
+      video.addEventListener("ended", onEnded);
+      video.addEventListener("error", onError);
+    });
+
+    soundBtn.addEventListener("click", () => {
+      muted = !muted;
+      players[active].muted = muted;
+      soundBtn.textContent = muted ? "소리 켜기" : "소리 끄기";
+      if (!muted) {
+        const pending = players[active].play();
+        if (pending) pending.catch(() => {});
+      }
+    });
+
+    document.getElementById("startBtn").addEventListener("click", () => {
+      muted = false;
+      soundBtn.textContent = "소리 끄기";
+      startEl.hidden = true;
+      playCurrent();
+    });
+
+    loadInto(players[0], takeNext());
+    loadInto(players[1], takeNext());
+    playCurrent();
+  </script>
+</body>
+</html>
