@@ -23,19 +23,15 @@
 
     video {
       position: absolute;
-      width: 0;
-      height: 0;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       background: #000;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
     }
 
-    video.is-on {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    video.is-on { opacity: 1; }
 
     .error {
       position: absolute;
@@ -96,49 +92,12 @@
       video.load();
     }
 
-    function place(video) {
-      const ratio = video.videoWidth / video.videoHeight;
-      if (!ratio) return;
-      const margin = 20;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const maxW = Math.max(120, vw - margin * 2);
-      const maxH = Math.max(120, vh - margin * 2);
-      const scale = 0.34 + Math.random() * 0.38;
-      let width = maxW * scale;
-      let height = width / ratio;
-      const heightCap = maxH * Math.min(0.86, scale + 0.2);
-      if (height > heightCap) {
-        height = heightCap;
-        width = height * ratio;
-      }
-      if (width > maxW) {
-        width = maxW;
-        height = width / ratio;
-      }
-      if (height > maxH) {
-        height = maxH;
-        width = height * ratio;
-      }
-      const left = margin + Math.random() * Math.max(0, vw - width - margin * 2);
-      const top = margin + Math.random() * Math.max(0, vh - height - margin * 2);
-      video.style.width = width + "px";
-      video.style.height = height + "px";
-      video.style.left = left + "px";
-      video.style.top = top + "px";
-    }
-
     function armStandby() {
       loadInto(players[1 - active], pickRandom(players[active].dataset.name || lastName));
     }
 
     function reveal(video) {
-      const show = () => {
-        place(video);
-        players.forEach((item) => item.classList.toggle("is-on", item === video));
-      };
-      if (video.videoWidth) show();
-      else video.addEventListener("loadedmetadata", show, { once: true });
+      players.forEach((item) => item.classList.toggle("is-on", item === video));
     }
 
     function unlockSound() {
